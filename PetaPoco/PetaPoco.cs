@@ -705,7 +705,7 @@ namespace PetaPoco
 
 		// Create a command
 		static Regex rxParamsPrefix = new Regex(@"(?<!@)@\w+", RegexOptions.Compiled);
-        IDbCommand CreateCommand(IDbConnection connection, string sql, params object[] args)
+        protected IDbCommand CreateCommand(IDbConnection connection, string sql, params object[] args)
 		{
 			// Perform parameter prefix replacements
 			if (_paramPrefix != "@")
@@ -827,7 +827,7 @@ namespace PetaPoco
 
 		static Regex rxSelect = new Regex(@"\A\s*(SELECT|EXECUTE|CALL|EXEC)\s", RegexOptions.Compiled | RegexOptions.Singleline | RegexOptions.IgnoreCase | RegexOptions.Multiline);
         static Regex rxFrom = new Regex(@"\A\s*FROM\s", RegexOptions.Compiled | RegexOptions.Singleline | RegexOptions.IgnoreCase | RegexOptions.Multiline);
-        string AddSelectClause<T>(string sql)
+        public string AddSelectClause<T>(string sql)
         {
 			if (sql.StartsWith(";"))
 				return sql.Substring(1);
@@ -849,17 +849,17 @@ namespace PetaPoco
         public bool EnableAutoSelect { get; set; }
 
 		// Return a typed list of pocos
-		public List<T> Fetch<T>(string sql, params object[] args) 
+		public virtual List<T> Fetch<T>(string sql, params object[] args) 
 		{
 		    return Fetch<T>(new Sql(sql, args));
 		}
             
-		public List<T> Fetch<T>(Sql sql) 
+		public virtual List<T> Fetch<T>(Sql sql) 
         {
 		    return Query<T>(sql).ToList();
 		}
 
-        public List<T> Fetch<T>()
+        public virtual List<T> Fetch<T>()
         {
             return Fetch<T>("");
         }
