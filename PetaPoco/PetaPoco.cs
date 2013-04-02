@@ -1546,12 +1546,24 @@ namespace PetaPoco
             var primaryKeyValuePairs = GetPrimaryKeyValues(PocoData.ForType(typeof(T)).TableInfo.PrimaryKey, primaryKey);
             return FirstOrDefault<T>(string.Format("WHERE {0}", BuildPrimaryKeySql(primaryKeyValuePairs, ref index)), primaryKeyValuePairs.Select(x => x.Value).ToArray()) != null;
 		}
+
+		public virtual T Single<T>(object primaryKey)
+		{
+			return SingleById<T>(primaryKey);
+		}
+
 		public T SingleById<T>(object primaryKey) 
 		{
             var index = 0;
             var primaryKeyValuePairs = GetPrimaryKeyValues(PocoData.ForType(typeof(T)).TableInfo.PrimaryKey, primaryKey);
             return Single<T>(string.Format("WHERE {0}", BuildPrimaryKeySql(primaryKeyValuePairs, ref index)), primaryKeyValuePairs.Select(x => x.Value).ToArray());
 		}
+
+		public T SingleOrDefault<T>(object primaryKey)
+		{
+			return SingleOrDefaultById<T>(primaryKey);
+		}
+
 		public T SingleOrDefaultById<T>(object primaryKey) 
 		{
 		    var index = 0;
@@ -2848,7 +2860,7 @@ namespace PetaPoco
 			_db = null;
 		}
 
-		public void Dispose()
+		public virtual void Dispose()
 		{
 			if (_db != null)
 				_db.AbortTransaction();
