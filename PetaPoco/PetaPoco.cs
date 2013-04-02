@@ -2213,6 +2213,18 @@ namespace PetaPoco
 			public virtual void SetValue(object target, object val) { PropertyInfo.SetValue(target, val, null); }
 			public virtual object GetValue(object target) { return PropertyInfo.GetValue(target, null); }
 			public virtual object ChangeType(object val) { return Convert.ChangeType(val, PropertyInfo.PropertyType); }
+			public Type GetNonNullableType()
+			{
+				if (IsNullableColumn())
+				{
+					return PropertyInfo.PropertyType.GetGenericArguments().First();
+				}
+				return PropertyInfo.PropertyType;
+			}
+			public bool IsNullableColumn()
+			{
+				return PropertyInfo.PropertyType.IsGenericType && PropertyInfo.PropertyType.GetGenericTypeDefinition().Equals(typeof(Nullable<>));
+			}
 		}
 		public class ExpandoColumn : PocoColumn
 		{
