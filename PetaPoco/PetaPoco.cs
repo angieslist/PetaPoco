@@ -437,7 +437,7 @@ namespace PetaPoco
         }
 
 		// Access to our shared connection
-		public IDbConnection Connection
+		public virtual IDbConnection Connection
 		{
 			get { return _sharedConnection; }
 		}
@@ -455,7 +455,7 @@ namespace PetaPoco
         }
 
 		// Helper to create a transaction scope
-		public Transaction GetTransaction()
+		public virtual Transaction GetTransaction()
 		{
 			return GetTransaction(null);
 		}
@@ -474,7 +474,7 @@ namespace PetaPoco
 		public virtual void OnBeginTransaction() { }
 		public virtual void OnEndTransaction() { }
 
-        public void BeginTransaction()
+        public virtual void BeginTransaction()
         {
             BeginTransaction(null);
         }
@@ -507,7 +507,7 @@ namespace PetaPoco
 		// Start a new transaction, can be nested, every call must be
 		//	matched by a call to AbortTransaction or CompleteTransaction
 		// Use `using (var scope=db.Transaction) { scope.Complete(); }` to ensure correct semantics
-        public void BeginTransaction(IsolationLevel? isolationLevel)
+        public virtual void BeginTransaction(IsolationLevel? isolationLevel)
 		{
 			_transactionDepth++;
 
@@ -749,12 +749,12 @@ namespace PetaPoco
 		public virtual void OnExecutedCommand(IDbCommand cmd) { }
 
 		// Execute a non-query command
-		public int Execute(string sql, params object[] args)
+		public virtual int Execute(string sql, params object[] args)
 		{
             return Execute(new Sql(sql, args));
 		}
 
-		public int Execute(Sql Sql)
+		public virtual int Execute(Sql Sql)
 		{
             var sql = Sql.SQL;
             var args = Sql.Arguments;
@@ -784,12 +784,12 @@ namespace PetaPoco
 		}
 
 		// Execute and cast a scalar property
-		public T ExecuteScalar<T>(string sql, params object[] args)
+		public virtual T ExecuteScalar<T>(string sql, params object[] args)
 		{
             return ExecuteScalar<T>(new Sql(sql, args));
 		}
 
-		public T ExecuteScalar<T>(Sql Sql)
+		public virtual T ExecuteScalar<T>(Sql Sql)
 		{
             var sql = Sql.SQL;
             var args = Sql.Arguments;
@@ -1028,12 +1028,12 @@ namespace PetaPoco
         }
 
         // Return an enumerable collection of pocos
-        public IEnumerable<T> Query<T>(string sql, params object[] args)
+        public virtual IEnumerable<T> Query<T>(string sql, params object[] args)
         {
             return Query<T>(new Sql(sql, args));
         }
 
-        public IEnumerable<T> Query<T>(Sql Sql)
+        public virtual IEnumerable<T> Query<T>(Sql Sql)
         {
             return Query<T>(default(T), Sql);
         }
@@ -1094,44 +1094,44 @@ namespace PetaPoco
 		}
 
 		// Multi Fetch
-        public List<TRet> Fetch<T1, T2, TRet>(Func<T1, T2, TRet> cb, string sql, params object[] args) { return Query<T1, T2, TRet>(cb, sql, args).ToList(); }
-        public List<TRet> Fetch<T1, T2, T3, TRet>(Func<T1, T2, T3, TRet> cb, string sql, params object[] args) { return Query<T1, T2, T3, TRet>(cb, sql, args).ToList(); }
-        public List<TRet> Fetch<T1, T2, T3, T4, TRet>(Func<T1, T2, T3, T4, TRet> cb, string sql, params object[] args) { return Query<T1, T2, T3, T4, TRet>(cb, sql, args).ToList(); }
+        public virtual List<TRet> Fetch<T1, T2, TRet>(Func<T1, T2, TRet> cb, string sql, params object[] args) { return Query<T1, T2, TRet>(cb, sql, args).ToList(); }
+        public virtual List<TRet> Fetch<T1, T2, T3, TRet>(Func<T1, T2, T3, TRet> cb, string sql, params object[] args) { return Query<T1, T2, T3, TRet>(cb, sql, args).ToList(); }
+        public virtual List<TRet> Fetch<T1, T2, T3, T4, TRet>(Func<T1, T2, T3, T4, TRet> cb, string sql, params object[] args) { return Query<T1, T2, T3, T4, TRet>(cb, sql, args).ToList(); }
 
         // Multi Query
-        public IEnumerable<TRet> Query<T1, T2, TRet>(Func<T1, T2, TRet> cb, string sql, params object[] args) { return Query<TRet>(new Type[] { typeof(T1), typeof(T2) }, cb, new Sql(sql, args)); }
-        public IEnumerable<TRet> Query<T1, T2, T3, TRet>(Func<T1, T2, T3, TRet> cb, string sql, params object[] args) { return Query<TRet>(new Type[] { typeof(T1), typeof(T2), typeof(T3) }, cb, new Sql(sql, args)); }
-        public IEnumerable<TRet> Query<T1, T2, T3, T4, TRet>(Func<T1, T2, T3, T4, TRet> cb, string sql, params object[] args) { return Query<TRet>(new Type[] { typeof(T1), typeof(T2), typeof(T3), typeof(T4) }, cb, new Sql(sql, args)); }
+        public virtual IEnumerable<TRet> Query<T1, T2, TRet>(Func<T1, T2, TRet> cb, string sql, params object[] args) { return Query<TRet>(new Type[] { typeof(T1), typeof(T2) }, cb, new Sql(sql, args)); }
+        public virtual IEnumerable<TRet> Query<T1, T2, T3, TRet>(Func<T1, T2, T3, TRet> cb, string sql, params object[] args) { return Query<TRet>(new Type[] { typeof(T1), typeof(T2), typeof(T3) }, cb, new Sql(sql, args)); }
+        public virtual IEnumerable<TRet> Query<T1, T2, T3, T4, TRet>(Func<T1, T2, T3, T4, TRet> cb, string sql, params object[] args) { return Query<TRet>(new Type[] { typeof(T1), typeof(T2), typeof(T3), typeof(T4) }, cb, new Sql(sql, args)); }
 
         // Multi Fetch (SQL builder)
-        public List<TRet> Fetch<T1, T2, TRet>(Func<T1, T2, TRet> cb, Sql sql) { return Query<T1, T2, TRet>(cb, sql).ToList(); }
-        public List<TRet> Fetch<T1, T2, T3, TRet>(Func<T1, T2, T3, TRet> cb, Sql sql) { return Query<T1, T2, T3, TRet>(cb, sql).ToList(); }
-        public List<TRet> Fetch<T1, T2, T3, T4, TRet>(Func<T1, T2, T3, T4, TRet> cb, Sql sql) { return Query<T1, T2, T3, T4, TRet>(cb, sql).ToList(); }
+        public virtual List<TRet> Fetch<T1, T2, TRet>(Func<T1, T2, TRet> cb, Sql sql) { return Query<T1, T2, TRet>(cb, sql).ToList(); }
+        public virtual List<TRet> Fetch<T1, T2, T3, TRet>(Func<T1, T2, T3, TRet> cb, Sql sql) { return Query<T1, T2, T3, TRet>(cb, sql).ToList(); }
+        public virtual List<TRet> Fetch<T1, T2, T3, T4, TRet>(Func<T1, T2, T3, T4, TRet> cb, Sql sql) { return Query<T1, T2, T3, T4, TRet>(cb, sql).ToList(); }
 
         // Multi Query (SQL builder)
-        public IEnumerable<TRet> Query<T1, T2, TRet>(Func<T1, T2, TRet> cb, Sql sql) { return Query<TRet>(new Type[] { typeof(T1), typeof(T2) }, cb, sql); }
-        public IEnumerable<TRet> Query<T1, T2, T3, TRet>(Func<T1, T2, T3, TRet> cb, Sql sql) { return Query<TRet>(new Type[] { typeof(T1), typeof(T2), typeof(T3) }, cb, sql); }
-        public IEnumerable<TRet> Query<T1, T2, T3, T4, TRet>(Func<T1, T2, T3, T4, TRet> cb, Sql sql) { return Query<TRet>(new Type[] { typeof(T1), typeof(T2), typeof(T3), typeof(T4) }, cb, sql); }
+        public virtual IEnumerable<TRet> Query<T1, T2, TRet>(Func<T1, T2, TRet> cb, Sql sql) { return Query<TRet>(new Type[] { typeof(T1), typeof(T2) }, cb, sql); }
+        public virtual IEnumerable<TRet> Query<T1, T2, T3, TRet>(Func<T1, T2, T3, TRet> cb, Sql sql) { return Query<TRet>(new Type[] { typeof(T1), typeof(T2), typeof(T3) }, cb, sql); }
+        public virtual IEnumerable<TRet> Query<T1, T2, T3, T4, TRet>(Func<T1, T2, T3, T4, TRet> cb, Sql sql) { return Query<TRet>(new Type[] { typeof(T1), typeof(T2), typeof(T3), typeof(T4) }, cb, sql); }
 
         // Multi Fetch (Simple)
-        public List<T1> Fetch<T1, T2>(string sql, params object[] args) { return Query<T1, T2>(sql, args).ToList(); }
-        public List<T1> Fetch<T1, T2, T3>(string sql, params object[] args) { return Query<T1, T2, T3>(sql, args).ToList(); }
-        public List<T1> Fetch<T1, T2, T3, T4>(string sql, params object[] args) { return Query<T1, T2, T3, T4>(sql, args).ToList(); }
+        public virtual List<T1> Fetch<T1, T2>(string sql, params object[] args) { return Query<T1, T2>(sql, args).ToList(); }
+        public virtual List<T1> Fetch<T1, T2, T3>(string sql, params object[] args) { return Query<T1, T2, T3>(sql, args).ToList(); }
+        public virtual List<T1> Fetch<T1, T2, T3, T4>(string sql, params object[] args) { return Query<T1, T2, T3, T4>(sql, args).ToList(); }
 
         // Multi Query (Simple)
-        public IEnumerable<T1> Query<T1, T2>(string sql, params object[] args) { return Query<T1>(new Type[] { typeof(T1), typeof(T2) }, null, new Sql(sql, args)); }
-        public IEnumerable<T1> Query<T1, T2, T3>(string sql, params object[] args) { return Query<T1>(new Type[] { typeof(T1), typeof(T2), typeof(T3) }, null, new Sql(sql, args)); }
-        public IEnumerable<T1> Query<T1, T2, T3, T4>(string sql, params object[] args) { return Query<T1>(new Type[] { typeof(T1), typeof(T2), typeof(T3), typeof(T4) }, null, new Sql(sql, args)); }
+        public virtual IEnumerable<T1> Query<T1, T2>(string sql, params object[] args) { return Query<T1>(new Type[] { typeof(T1), typeof(T2) }, null, new Sql(sql, args)); }
+        public virtual IEnumerable<T1> Query<T1, T2, T3>(string sql, params object[] args) { return Query<T1>(new Type[] { typeof(T1), typeof(T2), typeof(T3) }, null, new Sql(sql, args)); }
+        public virtual IEnumerable<T1> Query<T1, T2, T3, T4>(string sql, params object[] args) { return Query<T1>(new Type[] { typeof(T1), typeof(T2), typeof(T3), typeof(T4) }, null, new Sql(sql, args)); }
 
         // Multi Fetch (Simple) (SQL builder)
-        public List<T1> Fetch<T1, T2>(Sql sql) { return Query<T1, T2>(sql).ToList(); }
-        public List<T1> Fetch<T1, T2, T3>(Sql sql) { return Query<T1, T2, T3>(sql).ToList(); }
-        public List<T1> Fetch<T1, T2, T3, T4>(Sql sql) { return Query<T1, T2, T3, T4>(sql).ToList(); }
+        public virtual List<T1> Fetch<T1, T2>(Sql sql) { return Query<T1, T2>(sql).ToList(); }
+        public virtual List<T1> Fetch<T1, T2, T3>(Sql sql) { return Query<T1, T2, T3>(sql).ToList(); }
+        public virtual List<T1> Fetch<T1, T2, T3, T4>(Sql sql) { return Query<T1, T2, T3, T4>(sql).ToList(); }
 
         // Multi Query (Simple) (SQL builder)
-        public IEnumerable<T1> Query<T1, T2>(Sql sql) { return Query<T1>(new Type[] { typeof(T1), typeof(T2) }, null, sql); }
-        public IEnumerable<T1> Query<T1, T2, T3>(Sql sql) { return Query<T1>(new Type[] { typeof(T1), typeof(T2), typeof(T3) }, null, sql); }
-        public IEnumerable<T1> Query<T1, T2, T3, T4>(Sql sql) { return Query<T1>(new Type[] { typeof(T1), typeof(T2), typeof(T3), typeof(T4) }, null, sql); }
+        public virtual IEnumerable<T1> Query<T1, T2>(Sql sql) { return Query<T1>(new Type[] { typeof(T1), typeof(T2) }, null, sql); }
+        public virtual IEnumerable<T1> Query<T1, T2, T3>(Sql sql) { return Query<T1>(new Type[] { typeof(T1), typeof(T2), typeof(T3) }, null, sql); }
+        public virtual IEnumerable<T1> Query<T1, T2, T3, T4>(Sql sql) { return Query<T1>(new Type[] { typeof(T1), typeof(T2), typeof(T3), typeof(T4) }, null, sql); }
 
 		// Automagically guess the property relationships between various POCOs and create a delegate that will set them up
 		object GetAutoMapper(Type[] types)
@@ -1646,7 +1646,7 @@ namespace PetaPoco
 			}
 		}
 
-		public object Insert(string tableName, string primaryKeyName, object poco)
+		public virtual object Insert(string tableName, string primaryKeyName, object poco)
 		{
 			return Insert(tableName, primaryKeyName, true, poco);
 		}
@@ -1654,7 +1654,7 @@ namespace PetaPoco
 		// Insert a poco into a table.  If the poco has a property with the same name 
 		// as the primary key the id of the new record is assigned to it.  Either way,
 		// the new id is returned.
-		public object Insert(string tableName, string primaryKeyName, bool autoIncrement, object poco)
+		public virtual object Insert(string tableName, string primaryKeyName, bool autoIncrement, object poco)
 		{
 			try
 			{
@@ -1842,7 +1842,7 @@ namespace PetaPoco
 		}
 
 		// Insert an annotated poco object
-		public object Insert(object poco)
+		public virtual object Insert(object poco)
 		{
 			var pd = PocoData.ForType(poco.GetType());
 			return Insert(pd.TableInfo.TableName, pd.TableInfo.PrimaryKey, pd.TableInfo.AutoIncrement, poco);
@@ -1963,55 +1963,55 @@ namespace PetaPoco
             return primaryKeyValues;
         }
 
-        public int Update(string tableName, string primaryKeyName, object poco)
+        public virtual int Update(string tableName, string primaryKeyName, object poco)
 		{
 			return Update(tableName, primaryKeyName, poco, null);
 		}
 
-        public int Update(string tableName, string primaryKeyName, object poco, IEnumerable<string> columns)
+        public virtual int Update(string tableName, string primaryKeyName, object poco, IEnumerable<string> columns)
 		{
 			return Update(tableName, primaryKeyName, poco, null, columns);
 		}
 
-        public int Update(object poco, IEnumerable<string> columns)
+        public virtual int Update(object poco, IEnumerable<string> columns)
 		{
 			return Update(poco, null, columns);
 		}
 
-		public int Update(object poco)
+		public virtual int Update(object poco)
 		{
 			return Update(poco, null, null);
 		}
 
-		public int Update(object poco, object primaryKeyValue)
+		public virtual int Update(object poco, object primaryKeyValue)
 		{
 			return Update(poco, primaryKeyValue, null);
 		}
 
-        public int Update(object poco, object primaryKeyValue, IEnumerable<string> columns)
+        public virtual int Update(object poco, object primaryKeyValue, IEnumerable<string> columns)
 		{
 			var pd = PocoData.ForType(poco.GetType());
 			return Update(pd.TableInfo.TableName, pd.TableInfo.PrimaryKey, poco, primaryKeyValue, columns);
 		}
 
-		public int Update<T>(string sql, params object[] args)
+		public virtual int Update<T>(string sql, params object[] args)
 		{
 			var pd = PocoData.ForType(typeof(T));
 			return Execute(string.Format("UPDATE {0} {1}", EscapeTableName(pd.TableInfo.TableName), sql), args);
 		}
 
-		public int Update<T>(Sql sql)
+		public virtual int Update<T>(Sql sql)
 		{
 			var pd = PocoData.ForType(typeof(T));
 			return Execute(new Sql(string.Format("UPDATE {0}", EscapeTableName(pd.TableInfo.TableName))).Append(sql));
 		}
 
-		public int Delete(string tableName, string primaryKeyName, object poco)
+		public virtual int Delete(string tableName, string primaryKeyName, object poco)
 		{
 			return Delete(tableName, primaryKeyName, poco, null);
 		}
 
-		public int Delete(string tableName, string primaryKeyName, object poco, object primaryKeyValue)
+		public virtual int Delete(string tableName, string primaryKeyName, object poco, object primaryKeyValue)
 		{
             var primaryKeyValuePairs = GetPrimaryKeyValues(primaryKeyName, primaryKeyValue);
 			// If primary key value not specified, pick it up from the object
@@ -2033,13 +2033,13 @@ namespace PetaPoco
 			return Execute(sql, primaryKeyValuePairs.Select(x=>x.Value).ToArray());
 		}
 
-		public int Delete(object poco)
+		public virtual int Delete(object poco)
 		{
 			var pd = PocoData.ForType(poco.GetType());
 			return Delete(pd.TableInfo.TableName, pd.TableInfo.PrimaryKey, poco);
 		}
 
-		public int Delete<T>(object pocoOrPrimaryKey)
+		public virtual int Delete<T>(object pocoOrPrimaryKey)
 		{
 			if (pocoOrPrimaryKey.GetType() == typeof(T))
 				return Delete(pocoOrPrimaryKey);
@@ -2047,20 +2047,20 @@ namespace PetaPoco
 			return Delete(pd.TableInfo.TableName, pd.TableInfo.PrimaryKey, null, pocoOrPrimaryKey);
 		}
 
-		public int Delete<T>(string sql, params object[] args)
+		public virtual int Delete<T>(string sql, params object[] args)
 		{
 			var pd = PocoData.ForType(typeof(T));
 			return Execute(string.Format("DELETE FROM {0} {1}", EscapeTableName(pd.TableInfo.TableName), sql), args);
 		}
 
-		public int Delete<T>(Sql sql)
+		public virtual int Delete<T>(Sql sql)
 		{
 			var pd = PocoData.ForType(typeof(T));
 			return Execute(new Sql(string.Format("DELETE FROM {0}", EscapeTableName(pd.TableInfo.TableName))).Append(sql));
 		}
 
 		// Check if a poco represents a new record
-		public bool IsNew(string primaryKeyName, object poco)
+		public virtual bool IsNew(string primaryKeyName, object poco)
 		{
 			var pd = PocoData.ForObject(poco, primaryKeyName);
 			object pk;
@@ -2111,7 +2111,7 @@ namespace PetaPoco
 			}
 		}
 
-		public bool IsNew(object poco)
+		public virtual bool IsNew(object poco)
 		{
 			var pd = PocoData.ForType(poco.GetType());
 			if (!pd.TableInfo.AutoIncrement)
@@ -2120,7 +2120,7 @@ namespace PetaPoco
 		}
 
 		// Insert new record or Update existing record
-		public void Save(string tableName, string primaryKeyName, object poco)
+		public virtual void Save(string tableName, string primaryKeyName, object poco)
 		{
 			if (IsNew(primaryKeyName, poco))
 			{
@@ -2132,14 +2132,14 @@ namespace PetaPoco
 			}
 		}
 
-		public void Save(object poco)
+		public virtual void Save(object poco)
 		{
 			var pd = PocoData.ForType(poco.GetType());
 			Save(pd.TableInfo.TableName, pd.TableInfo.PrimaryKey, poco);
 		}
 
 		public int CommandTimeout { get; set; }
-		public int OneTimeCommandTimeout { get; set; }
+		public virtual int OneTimeCommandTimeout { get; set; }
 
 		void DoPreExecute(IDbCommand cmd)
 		{
