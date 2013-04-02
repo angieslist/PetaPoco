@@ -352,7 +352,7 @@ namespace PetaPoco
         protected DBType _dbType = DBType.NotSet;
 
 		// Common initialization
-		private void CommonConstruct()
+		public virtual void CommonConstruct()
 		{
             _transactionDepth = 0;
             ForceDateTimesToUtc = true;
