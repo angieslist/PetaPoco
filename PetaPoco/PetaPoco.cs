@@ -474,6 +474,31 @@ namespace PetaPoco
             BeginTransaction(null);
         }
 
+		//Any call to EnlistTheUnsetTransactionInstance should have a corresponding call to DeEnlistTheCurrentTransactionInstance
+		public virtual void EnlistTheUnsetTransactionInstance(IDbTransaction transaction)
+		{
+			if (transaction != null && this._transaction == null)
+			{
+				_transactionDepth++;
+				if (_transactionDepth == 1)
+				{
+					_transaction = transaction;
+					_transactionCancelled = false;
+					OnBeginTransaction();
+				}
+			}
+		}
+		//Only call DeEnlistTheCurrentTransactionInstance if EnlistTheUnsetTransactionInstance was used prior
+		public virtual void DeEnlistTheCurrentTransactionInstance()
+		{
+			if (this._transaction != null)
+			{
+				OnEndTransaction();
+				_transaction = null;
+				_transactionDepth--;
+			}
+		}
+
 		// Start a new transaction, can be nested, every call must be
 		//	matched by a call to AbortTransaction or CompleteTransaction
 		// Use `using (var scope=db.Transaction) { scope.Complete(); }` to ensure correct semantics
