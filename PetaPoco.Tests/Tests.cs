@@ -26,7 +26,7 @@ namespace PetaPoco.Tests
 		public void CreateDB()
 		{
 			db = new Database(_connectionStringName);
-			db.OpenSharedConnection();		// <-- Wow, this is crucial to getting SqlCE to perform.
+			//db.OpenSharedConnection();		// <-- Wow, this is crucial to getting SqlCE to perform.
 			db.Execute(Utils.LoadTextResource(string.Format("PetaPoco.Tests.{0}_init.sql", _connectionStringName)));
 		}
 
@@ -91,6 +91,23 @@ namespace PetaPoco.Tests
 
 			return o;
 		}
+
+        deco_version CreateDecoVersion()
+        {
+            // Need a rounded date as DB can't store millis
+            var now = DateTime.UtcNow;
+            now = new DateTime(now.Year, now.Month, now.Day, now.Hour, now.Minute, now.Second);
+
+            // Setup a record
+            var o = new deco_version();
+            o.title = string.Format("insert {0}", r.Next());
+            o.content = string.Format("insert {0}", r.Next());
+            o.draft = true;
+            o.date_created = now;
+            o.state = State.Maybe;
+
+            return o;
+        }
 
 		void Assert(poco a, poco b)
 		{
@@ -730,28 +747,28 @@ namespace PetaPoco.Tests
 		[Test]
 		public void SingleOrDefault_PK_Empty()
 		{
-			Expect(db.SingleOrDefault<deco>(0), Is.Null);
+			Expect(db.SingleOrDefaultById<deco>(0), Is.Null);
 		}
 
 		[Test]
 		public void SingleOrDefault_PK_Single()
 		{
 			var id = InsertRecords(1);
-			Expect(db.SingleOrDefault<deco>(id), Is.Not.Null);
+			Expect(db.SingleOrDefaultById<deco>(id), Is.Not.Null);
 		}
 
 		[Test]
 		[ExpectedException(typeof(InvalidOperationException))]
 		public void Single_PK_Empty()
 		{
-			db.Single<deco>(0);
+			db.SingleById<deco>(0);
 		}
 
 		[Test]
 		public void Single_PK_Single()
 		{
 			var id = InsertRecords(1);
-			Expect(db.Single<deco>(id), Is.Not.Null);
+			Expect(db.SingleById<deco>(id), Is.Not.Null);
 		}
 
 		[Test]
@@ -867,6 +884,45 @@ namespace PetaPoco.Tests
 			var id2 = db.SingleOrDefault<long>("SELECT id from petapoco WHERE id=@0", id);
 			Expect(id, Is.EqualTo(id2));
 		}
+	
+        [Test]
+        public void Versioning_InsertSetToOne()
+        {
+            var o = CreateDecoVersion();
+            db.Insert(o);
+            var a = db.SingleOrDefault<deco_version>("FROM petapoco WHERE id=@0", o.id);
+            Expect(a, Is.Not.Null);
+            Expect(a.version, Is.EqualTo(1));
+        }
+
+        [Test]
+        public void Versioning_UpdateIncrementVersionColumn()
+        {
+            var o = CreateDecoVersion();
+            db.Insert(o);
+            o.title = "new title";
+            db.Update(o);
+            var b = db.SingleOrDefault<deco_version>("FROM petapoco WHERE id=@0", o.id);
+            Expect(b.version, Is.EqualTo(2));
+            Expect(b.title, Is.EqualTo("new title"));
+        }
+
+        [Test]
+        public void Versioning_NoUpdateIfVersionChangedUnderneath()
+        {
+            var o = CreateDecoVersion();
+            db.Insert(o);
+            o.title = "new title";
+
+            // Update version underneath (usually done by another user)
+            db.Execute("update petapoco set version = version+1 where id=@0", o.id);
+            
+            var rows = db.Update(o);
+            var b = db.SingleOrDefault<deco_version>("FROM petapoco WHERE id=@0", o.id);
+            Expect(rows, Is.EqualTo(0));
+            Expect(b.title, Is.Not.EqualTo("new title"));
+        }
+
 	}
 
 }
