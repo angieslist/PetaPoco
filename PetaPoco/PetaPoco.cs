@@ -205,8 +205,10 @@ namespace PetaPoco
         IEnumerable<T> Query<T>(Sql sql);
         T SingleById<T>(object primaryKey);
         T SingleOrDefaultById<T>(object primaryKey);
+		T Single<T>(object primaryKey);
         T Single<T>(string sql, params object[] args);
         T SingleInto<T>(T instance, string sql, params object[] args);
+		T SingleOrDefault<T>(object primaryKey);
         T SingleOrDefault<T>(string sql, params object[] args);
         T SingleOrDefaultInto<T>(T instance, string sql, params object[] args);
         T First<T>(string sql, params object[] args);
@@ -229,9 +231,35 @@ namespace PetaPoco
         TRet FetchMultiple<T1, T2, TRet>(Func<List<T1>, List<T2>, TRet> cb, string sql, params object[] args);
         TRet FetchMultiple<T1, T2, T3, TRet>(Func<List<T1>, List<T2>, List<T3>, TRet> cb, string sql, params object[] args);
         TRet FetchMultiple<T1, T2, T3, T4, TRet>(Func<List<T1>, List<T2>, List<T3>, List<T4>, TRet> cb, string sql, params object[] args);
+        TRet FetchMultiple<T1, T2, T3, T4, T5, TRet>(Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, TRet> cb, string sql, params object[] args);
+        TRet FetchMultiple<T1, T2, T3, T4, T5, T6, TRet>(Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, TRet> cb, string sql, params object[] args);
+        TRet FetchMultiple<T1, T2, T3, T4, T5, T6, T7, TRet>(Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, TRet> cb, string sql, params object[] args);
+        TRet FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, TRet>(Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, List<T8>, TRet> cb, string sql, params object[] args);
+        TRet FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, TRet>(Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, List<T8>, List<T9>, TRet> cb, string sql, params object[] args);
+        TRet FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, TRet>(Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, List<T8>, List<T9>, List<T10>, TRet> cb, string sql, params object[] args);
+        TRet FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, TRet>(Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, List<T8>, List<T9>, List<T10>, List<T11>, TRet> cb, string sql, params object[] args);
+        TRet FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, TRet>(Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, TRet> cb, string sql, params object[] args);
+        TRet FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, TRet>(Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, List<T13>, TRet> cb, string sql, params object[] args);
+        TRet FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, TRet>(Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, List<T13>, List<T14>, TRet> cb, string sql, params object[] args);
+        TRet FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, TRet>(Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, List<T13>, List<T14>, List<T15>, TRet> cb, string sql, params object[] args);
+        TRet FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, TRet>(Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, List<T13>, List<T14>, List<T15>, List<T16>, TRet> cb, string sql, params object[] args);
+
         TRet FetchMultiple<T1, T2, TRet>(Func<List<T1>, List<T2>, TRet> cb, Sql sql);
         TRet FetchMultiple<T1, T2, T3, TRet>(Func<List<T1>, List<T2>, List<T3>, TRet> cb, Sql sql);
         TRet FetchMultiple<T1, T2, T3, T4, TRet>(Func<List<T1>, List<T2>, List<T3>, List<T4>, TRet> cb, Sql sql);
+        TRet FetchMultiple<T1, T2, T3, T4, T5, TRet>(Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, TRet> cb, Sql sql);
+        TRet FetchMultiple<T1, T2, T3, T4, T5, T6, TRet>(Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, TRet> cb, Sql sql);
+        TRet FetchMultiple<T1, T2, T3, T4, T5, T6, T7, TRet>(Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, TRet> cb, Sql sql);
+        TRet FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, TRet>(Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, List<T8>, TRet> cb, Sql sql);
+        TRet FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, TRet>(Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, List<T8>, List<T9>, TRet> cb, Sql sql);
+        TRet FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, TRet>(Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, List<T8>, List<T9>, List<T10>, TRet> cb, Sql sql);
+        TRet FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, TRet>(Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, List<T8>, List<T9>, List<T10>, List<T11>, TRet> cb, Sql sql);
+        TRet FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, TRet>(Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, TRet> cb, Sql sql);
+        TRet FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, TRet>(Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, List<T13>, TRet> cb, Sql sql);
+        TRet FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, TRet>(Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, List<T13>, List<T14>, TRet> cb, Sql sql);
+        TRet FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, TRet>(Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, List<T13>, List<T14>, List<T15>, TRet> cb, Sql sql);
+        TRet FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, TRet>(Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, List<T13>, List<T14>, List<T15>, List<T16>, TRet> cb, Sql sql);
+
 #if PETAPOCO_NO_DYNAMIC
         Database.Tuple<List<T1>, List<T2>> FetchMultiple<T1, T2>(string sql, params object[] args);
         Database.Tuple<List<T1>, List<T2>, List<T3>> FetchMultiple<T1, T2, T3>(string sql, params object[] args);
@@ -243,9 +271,34 @@ namespace PetaPoco
         Tuple<List<T1>, List<T2>> FetchMultiple<T1, T2>(string sql, params object[] args);
         Tuple<List<T1>, List<T2>, List<T3>> FetchMultiple<T1, T2, T3>(string sql, params object[] args);
         Tuple<List<T1>, List<T2>, List<T3>, List<T4>> FetchMultiple<T1, T2, T3, T4>(string sql, params object[] args);
+        Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>> FetchMultiple<T1, T2, T3, T4, T5>(string sql, params object[] args);
+        Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>> FetchMultiple<T1, T2, T3, T4, T5, T6>(string sql, params object[] args);
+        Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>> FetchMultiple<T1, T2, T3, T4, T5, T6, T7>(string sql, params object[] args);
+        Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, List<T8>> FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8>(string sql, params object[] args);
+        Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T8>, List<T9>>> FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9>(string sql, params object[] args);
+        Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T8>, List<T9>, List<T10>>> FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>(string sql, params object[] args);
+        Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T8>, List<T9>, List<T10>, List<T11>>> FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>(string sql, params object[] args);
+        Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T8>, List<T9>, List<T10>, List<T11>, List<T12>>> FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>(string sql, params object[] args);
+        Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, List<T13>>> FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>(string sql, params object[] args);
+        Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, List<T13>, List<T14>>> FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>(string sql, params object[] args);
+        Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, List<T13>, List<T14>, List<T15>>> FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>(string sql, params object[] args);
+        Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, List<T13>, List<T14>, Tuple<List<T15>, List<T16>>>> FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(string sql, params object[] args);
+
         Tuple<List<T1>, List<T2>> FetchMultiple<T1, T2>(Sql sql);
         Tuple<List<T1>, List<T2>, List<T3>> FetchMultiple<T1, T2, T3>(Sql sql);
         Tuple<List<T1>, List<T2>, List<T3>, List<T4>> FetchMultiple<T1, T2, T3, T4>(Sql sql);
+        Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>> FetchMultiple<T1, T2, T3, T4, T5>(Sql sql);
+        Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>> FetchMultiple<T1, T2, T3, T4, T5, T6>(Sql sql);
+        Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>> FetchMultiple<T1, T2, T3, T4, T5, T6, T7>(Sql sql);
+        Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, List<T8>> FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8>(Sql sql);
+        Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T8>, List<T9>>> FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9>(Sql sql);
+        Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T8>, List<T9>, List<T10>>> FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>(Sql sql);
+        Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T8>, List<T9>, List<T10>, List<T11>>> FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>(Sql sql);
+        Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T8>, List<T9>, List<T10>, List<T11>, List<T12>>> FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>(Sql sql);
+        Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, List<T13>>> FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>(Sql sql);
+        Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, List<T13>, List<T14>>> FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>(Sql sql);
+        Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, List<T13>, List<T14>, List<T15>>> FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>(Sql sql);
+        Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, List<T13>, List<T14>, Tuple<List<T15>, List<T16>>>> FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(Sql sql);
 #endif
     }
 
@@ -1400,12 +1453,157 @@ namespace PetaPoco
 			}
 		}
 
-        public TRet FetchMultiple<T1, T2, TRet>(Func<List<T1>, List<T2>, TRet> cb, string sql, params object[] args) { return FetchMultiple<T1, T2, DontMap, DontMap, TRet>(new[] { typeof(T1), typeof(T2) }, cb, new Sql(sql, args)); }
-        public TRet FetchMultiple<T1, T2, T3, TRet>(Func<List<T1>, List<T2>, List<T3>, TRet> cb, string sql, params object[] args) { return FetchMultiple<T1, T2, T3, DontMap, TRet>(new[] { typeof(T1), typeof(T2), typeof(T3) }, cb, new Sql(sql, args)); }
-        public TRet FetchMultiple<T1, T2, T3, T4, TRet>(Func<List<T1>, List<T2>, List<T3>, List<T4>, TRet> cb, string sql, params object[] args) { return FetchMultiple<T1, T2, T3, T4, TRet>(new[] { typeof(T1), typeof(T2), typeof(T3), typeof(T4) }, cb, new Sql(sql, args)); }
-        public TRet FetchMultiple<T1, T2, TRet>(Func<List<T1>, List<T2>, TRet> cb, Sql sql) { return FetchMultiple<T1, T2, DontMap, DontMap, TRet>(new[] { typeof(T1), typeof(T2) }, cb, sql); }
-        public TRet FetchMultiple<T1, T2, T3, TRet>(Func<List<T1>, List<T2>, List<T3>, TRet> cb, Sql sql) { return FetchMultiple<T1, T2, T3, DontMap, TRet>(new[] { typeof(T1), typeof(T2), typeof(T3) }, cb, sql); }
-        public TRet FetchMultiple<T1, T2, T3, T4, TRet>(Func<List<T1>, List<T2>, List<T3>, List<T4>, TRet> cb, Sql sql) { return FetchMultiple<T1, T2, T3, T4, TRet>(new[] { typeof(T1), typeof(T2), typeof(T3), typeof(T4) }, cb, sql); }
+		// 2 
+        public TRet FetchMultiple<T1, T2, TRet>(Func<List<T1>, List<T2>, TRet> cb, string sql, params object[] args)
+		{
+			return FetchMultiple<T1, T2, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, TRet>(new[] { typeof(T1), typeof(T2) }, cb, new Sql(sql, args));
+		}
+		// 3 
+        public TRet FetchMultiple<T1, T2, T3, TRet>(Func<List<T1>, List<T2>, List<T3>, TRet> cb, string sql, params object[] args)
+		{
+			return FetchMultiple<T1, T2, T3, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, TRet>(new[] { typeof(T1), typeof(T2), typeof(T3) }, cb, new Sql(sql, args));
+		}
+		// 4 
+        public TRet FetchMultiple<T1, T2, T3, T4, TRet>(Func<List<T1>, List<T2>, List<T3>, List<T4>, TRet> cb, string sql, params object[] args)
+		{
+			return FetchMultiple<T1, T2, T3, T4, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, TRet>(new[] { typeof(T1), typeof(T2), typeof(T3), typeof(T4) }, cb, new Sql(sql, args));
+		}
+		// 5 
+        public TRet FetchMultiple<T1, T2, T3, T4, T5, TRet>(Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, TRet> cb, string sql, params object[] args)
+		{
+			return FetchMultiple<T1, T2, T3, T4, T5, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, TRet>(new[] { typeof(T1), typeof(T2), typeof(T3), typeof(T4), typeof(T5) }, cb, new Sql(sql, args));
+		}
+		// 6 
+        public TRet FetchMultiple<T1, T2, T3, T4, T5, T6, TRet>(Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, TRet> cb, string sql, params object[] args)
+		{
+			return FetchMultiple<T1, T2, T3, T4, T5, T6, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, TRet>(new[] { typeof(T1), typeof(T2), typeof(T3), typeof(T4), typeof(T5), typeof(T6) }, cb, new Sql(sql, args));
+		}
+		// 7 
+        public TRet FetchMultiple<T1, T2, T3, T4, T5, T6, T7, TRet>(Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, TRet> cb, string sql, params object[] args)
+		{
+			return FetchMultiple<T1, T2, T3, T4, T5, T6, T7, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, TRet>(new[] { typeof(T1), typeof(T2), typeof(T3), typeof(T4), typeof(T5), typeof(T6), typeof(T7) }, cb, new Sql(sql, args));
+		}
+		// 8 
+        public TRet FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, TRet>(Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, List<T8>, TRet> cb, string sql, params object[] args)
+		{
+			return FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, TRet>(new[] { typeof(T1), typeof(T2), typeof(T3), typeof(T4), typeof(T5), typeof(T6), typeof(T7), typeof(T8) }, cb, new Sql(sql, args));
+		}
+		// 9 
+        public TRet FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, TRet>(Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, List<T8>, List<T9>, TRet> cb, string sql, params object[] args)
+		{
+			return FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, TRet>(new[] { typeof(T1), typeof(T2), typeof(T3), typeof(T4), typeof(T5), typeof(T6), typeof(T7), typeof(T8), typeof(T9) }, cb, new Sql(sql, args));
+		}
+		// 10
+        public TRet FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, TRet>(Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, List<T8>, List<T9>, List<T10>, TRet> cb, string sql, params object[] args)
+		{
+			return FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, TRet>(new[] { typeof(T1), typeof(T2), typeof(T3), typeof(T4), typeof(T5), typeof(T6), typeof(T7), typeof(T8), typeof(T9), typeof(T10) }, cb, new Sql(sql, args));
+		}
+		// 11
+        public TRet FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, TRet>(Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, List<T8>, List<T9>, List<T10>, List<T11>, TRet> cb, string sql, params object[] args)
+		{
+			return FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, DontMap, DontMap, DontMap, DontMap, DontMap, TRet>(new[] { typeof(T1), typeof(T2), typeof(T3), typeof(T4), typeof(T5), typeof(T6), typeof(T7), typeof(T8), typeof(T9), typeof(T10), typeof(T11) }, cb, new Sql(sql, args));
+		}
+		// 12
+        public TRet FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, TRet>(Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, TRet> cb, string sql, params object[] args)
+		{
+			return FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, DontMap, DontMap, DontMap, DontMap, TRet>(new[] { typeof(T1), typeof(T2), typeof(T3), typeof(T4), typeof(T5), typeof(T6), typeof(T7), typeof(T8), typeof(T9), typeof(T10), typeof(T11), typeof(T12) }, cb, new Sql(sql, args));
+		}
+		// 13
+        public TRet FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, TRet>(Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, List<T13>, TRet> cb, string sql, params object[] args)
+		{
+			return FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, DontMap, DontMap, DontMap, TRet>(new[] { typeof(T1), typeof(T2), typeof(T3), typeof(T4), typeof(T5), typeof(T6), typeof(T7), typeof(T8), typeof(T9), typeof(T10), typeof(T11), typeof(T12), typeof(T13) }, cb, new Sql(sql, args));
+		}
+		// 14
+        public TRet FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, TRet>(Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, List<T13>, List<T14>, TRet> cb, string sql, params object[] args)
+		{
+			return FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, DontMap, DontMap, TRet>(new[] { typeof(T1), typeof(T2), typeof(T3), typeof(T4), typeof(T5), typeof(T6), typeof(T7), typeof(T8), typeof(T9), typeof(T10), typeof(T11), typeof(T12), typeof(T13), typeof(T14) }, cb, new Sql(sql, args));
+		}
+		// 15
+        public TRet FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, TRet>(Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, List<T13>, List<T14>, List<T15>, TRet> cb, string sql, params object[] args)
+		{
+			return FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, DontMap, TRet>(new[] { typeof(T1), typeof(T2), typeof(T3), typeof(T4), typeof(T5), typeof(T6), typeof(T7), typeof(T8), typeof(T9), typeof(T10), typeof(T11), typeof(T12), typeof(T13), typeof(T14), typeof(T15) }, cb, new Sql(sql, args));
+		}
+		// 16
+        public TRet FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, TRet>(Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, List<T13>, List<T14>, List<T15>, List<T16>, TRet> cb, string sql, params object[] args)
+		{
+			return FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, TRet>(new[] { typeof(T1), typeof(T2), typeof(T3), typeof(T4), typeof(T5), typeof(T6), typeof(T7), typeof(T8), typeof(T9), typeof(T10), typeof(T11), typeof(T12), typeof(T13), typeof(T14), typeof(T15), typeof(T16) }, cb, new Sql(sql, args));
+		}
+
+		//2
+        public TRet FetchMultiple<T1, T2, TRet>(Func<List<T1>, List<T2>, TRet> cb, Sql sql) 
+		{
+			return FetchMultiple<T1, T2, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, TRet>(new[] { typeof(T1), typeof(T2) }, cb, sql);
+		}
+		//3
+        public TRet FetchMultiple<T1, T2, T3, TRet>(Func<List<T1>, List<T2>, List<T3>, TRet> cb, Sql sql) 
+		{
+			return FetchMultiple<T1, T2, T3, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, TRet>(new[] { typeof(T1), typeof(T2), typeof(T3) }, cb, sql);
+		}
+		//4
+        public TRet FetchMultiple<T1, T2, T3, T4, TRet>(Func<List<T1>, List<T2>, List<T3>, List<T4>, TRet> cb, Sql sql) 
+		{
+			return FetchMultiple<T1, T2, T3, T4, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, TRet>(new[] { typeof(T1), typeof(T2), typeof(T3), typeof(T4) }, cb, sql);
+		}
+		//5
+        public TRet FetchMultiple<T1, T2, T3, T4, T5, TRet>(Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, TRet> cb, Sql sql) 
+		{
+			return FetchMultiple<T1, T2, T3, T4, T5, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, TRet>(new[] { typeof(T1), typeof(T2), typeof(T3), typeof(T4), typeof(T5) }, cb, sql);
+		}
+		//6
+        public TRet FetchMultiple<T1, T2, T3, T4, T5, T6, TRet>(Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, TRet> cb, Sql sql) 
+		{
+			return FetchMultiple<T1, T2, T3, T4, T5, T6, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, TRet>(new[] { typeof(T1), typeof(T2), typeof(T3), typeof(T4), typeof(T5), typeof(T6) }, cb, sql);
+		}
+		//7
+        public TRet FetchMultiple<T1, T2, T3, T4, T5, T6, T7, TRet>(Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, TRet> cb, Sql sql) 
+		{
+			return FetchMultiple<T1, T2, T3, T4, T5, T6, T7, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, TRet>(new[] { typeof(T1), typeof(T2), typeof(T3), typeof(T4), typeof(T5), typeof(T6), typeof(T7) }, cb, sql);
+		}
+		//8
+        public TRet FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, TRet>(Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, List<T8>, TRet> cb, Sql sql) 
+		{
+			return FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, TRet>(new[] { typeof(T1), typeof(T2), typeof(T3), typeof(T4), typeof(T5), typeof(T6), typeof(T7), typeof(T8) }, cb, sql);
+		}
+		//9
+        public TRet FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, TRet>(Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, List<T8>, List<T9>, TRet> cb, Sql sql) 
+		{
+			return FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, TRet>(new[] { typeof(T1), typeof(T2), typeof(T3), typeof(T4), typeof(T5), typeof(T6), typeof(T7), typeof(T8), typeof(T9) }, cb, sql);
+		}
+		//10
+        public TRet FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, TRet>(Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, List<T8>, List<T9>, List<T10>, TRet> cb, Sql sql) 
+		{
+			return FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, TRet>(new[] { typeof(T1), typeof(T2), typeof(T3), typeof(T4), typeof(T5), typeof(T6), typeof(T7), typeof(T8), typeof(T9), typeof(T10) }, cb, sql);
+		}
+		//11
+        public TRet FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, TRet>(Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, List<T8>, List<T9>, List<T10>, List<T11>, TRet> cb, Sql sql) 
+		{
+			return FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, DontMap, DontMap, DontMap, DontMap, DontMap, TRet>(new[] { typeof(T1), typeof(T2), typeof(T3), typeof(T4), typeof(T5), typeof(T6), typeof(T7), typeof(T8), typeof(T9), typeof(T10), typeof(T11) }, cb, sql);
+		}
+		//12
+        public TRet FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, TRet>(Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, TRet> cb, Sql sql) 
+		{
+			return FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, DontMap, DontMap, DontMap, DontMap, TRet>(new[] { typeof(T1), typeof(T2), typeof(T3), typeof(T4), typeof(T5), typeof(T6), typeof(T7), typeof(T8), typeof(T9), typeof(T10), typeof(T11), typeof(T12) }, cb, sql);
+		}
+		//13
+        public TRet FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, TRet>(Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, List<T13>, TRet> cb, Sql sql) 
+		{
+			return FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, DontMap, DontMap, DontMap, TRet>(new[] { typeof(T1), typeof(T2), typeof(T3), typeof(T4), typeof(T5), typeof(T6), typeof(T7), typeof(T8), typeof(T9), typeof(T10), typeof(T11), typeof(T12), typeof(T13) }, cb, sql);
+		}
+		//14
+        public TRet FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, TRet>(Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, List<T13>, List<T14>, TRet> cb, Sql sql) 
+		{
+			return FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, DontMap, DontMap, TRet>(new[] { typeof(T1), typeof(T2), typeof(T3), typeof(T4), typeof(T5), typeof(T6), typeof(T7), typeof(T8), typeof(T9), typeof(T10), typeof(T11), typeof(T12), typeof(T13), typeof(T14) }, cb, sql);
+		}
+		//15
+        public TRet FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, TRet>(Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, List<T13>, List<T14>, List<T15>, TRet> cb, Sql sql) 
+		{
+			return FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, DontMap, TRet>(new[] { typeof(T1), typeof(T2), typeof(T3), typeof(T4), typeof(T5), typeof(T6), typeof(T7), typeof(T8), typeof(T9), typeof(T10), typeof(T11), typeof(T12), typeof(T13), typeof(T14), typeof(T15) }, cb, sql);
+		}
+		//16
+        public TRet FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, TRet>(Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, List<T13>, List<T14>, List<T15>, List<T16>, TRet> cb, Sql sql) 
+		{
+			return FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, TRet>(new[] { typeof(T1), typeof(T2), typeof(T3), typeof(T4), typeof(T5), typeof(T6), typeof(T7), typeof(T8), typeof(T9), typeof(T10), typeof(T11), typeof(T12), typeof(T13), typeof(T14), typeof(T15), typeof(T16) }, cb, sql);
+		}
 
 #if PETAPOCO_NO_DYNAMIC
         public Tuple<List<T1>, List<T2>> FetchMultiple<T1, T2>(string sql, params object[] args) { return FetchMultiple<T1, T2, DontMap, DontMap, Tuple<List<T1>, List<T2>>>(new[] { typeof(T1), typeof(T2) }, new Func<List<T1>, List<T2>, Tuple<List<T1>, List<T2>>>((y, z) => new Tuple<List<T1>, List<T2>>(y, z)), new Sql(sql, args)); }
@@ -1439,18 +1637,358 @@ namespace PetaPoco
             public Tuple(T1 item1, T2 item2, T3 item3, T4 item4) { Item1 = item1; Item2 = item2; Item3 = item3; Item4 = item4; }
         }
 #else
-        public Tuple<List<T1>, List<T2>> FetchMultiple<T1, T2>(string sql, params object[] args) { return FetchMultiple<T1, T2, DontMap, DontMap, Tuple<List<T1>, List<T2>>>(new[] { typeof(T1), typeof(T2) }, new Func<List<T1>, List<T2>, Tuple<List<T1>, List<T2>>>((y, z) => new Tuple<List<T1>, List<T2>>(y, z)), new Sql(sql, args)); }
-        public Tuple<List<T1>, List<T2>, List<T3>> FetchMultiple<T1, T2, T3>(string sql, params object[] args) { return FetchMultiple<T1, T2, T3, DontMap, Tuple<List<T1>, List<T2>, List<T3>>>(new[] { typeof(T1), typeof(T2), typeof(T3) }, new Func<List<T1>, List<T2>, List<T3>, Tuple<List<T1>, List<T2>, List<T3>>>((x, y, z) => new Tuple<List<T1>, List<T2>, List<T3>>(x, y, z)), new Sql(sql, args)); }
-        public Tuple<List<T1>, List<T2>, List<T3>, List<T4>> FetchMultiple<T1, T2, T3, T4>(string sql, params object[] args) { return FetchMultiple<T1, T2, T3, T4, Tuple<List<T1>, List<T2>, List<T3>, List<T4>>>(new[] { typeof(T1), typeof(T2), typeof(T3), typeof(T4) }, new Func<List<T1>, List<T2>, List<T3>, List<T4>, Tuple<List<T1>, List<T2>, List<T3>, List<T4>>>((w, x, y, z) => new Tuple<List<T1>, List<T2>, List<T3>, List<T4>>(w, x, y, z)), new Sql(sql, args)); }
-        public Tuple<List<T1>, List<T2>> FetchMultiple<T1, T2>(Sql sql) { return FetchMultiple<T1, T2, DontMap, DontMap, Tuple<List<T1>, List<T2>>>(new[] { typeof(T1), typeof(T2) }, new Func<List<T1>, List<T2>, Tuple<List<T1>, List<T2>>>((y, z) => new Tuple<List<T1>, List<T2>>(y, z)), sql); }
-        public Tuple<List<T1>, List<T2>, List<T3>> FetchMultiple<T1, T2, T3>(Sql sql) { return FetchMultiple<T1, T2, T3, DontMap, Tuple<List<T1>, List<T2>, List<T3>>>(new[] { typeof(T1), typeof(T2), typeof(T3) }, new Func<List<T1>, List<T2>, List<T3>, Tuple<List<T1>, List<T2>, List<T3>>>((x, y, z) => new Tuple<List<T1>, List<T2>, List<T3>>(x, y, z)), sql); }
-        public Tuple<List<T1>, List<T2>, List<T3>, List<T4>> FetchMultiple<T1, T2, T3, T4>(Sql sql) { return FetchMultiple<T1, T2, T3, T4, Tuple<List<T1>, List<T2>, List<T3>, List<T4>>>(new[] { typeof(T1), typeof(T2), typeof(T3), typeof(T4) }, new Func<List<T1>, List<T2>, List<T3>, List<T4>, Tuple<List<T1>, List<T2>, List<T3>, List<T4>>>((w, x, y, z) => new Tuple<List<T1>, List<T2>, List<T3>, List<T4>>(w, x, y, z)), sql); }
+		// 2
+        public Tuple<List<T1>, List<T2>> FetchMultiple<T1, T2>(string sql, params object[] args) {
+			return FetchMultiple<T1, T2, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, Tuple<List<T1>, List<T2>>>(
+				new[] { typeof(T1), typeof(T2) },
+				new Func<List<T1>, List<T2>, Tuple<List<T1>, List<T2>>>(
+					(y, z) => new Tuple<List<T1>, List<T2>>(y, z)),
+				new Sql(sql, args)
+			); 
+		}
+		// 3
+        public Tuple<List<T1>, List<T2>, List<T3>> FetchMultiple<T1, T2, T3>(string sql, params object[] args)
+		{
+			return FetchMultiple<T1, T2, T3, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, Tuple<List<T1>, List<T2>, List<T3>>>(
+				new[] { typeof(T1), typeof(T2), typeof(T3) },
+				new Func<List<T1>, List<T2>, List<T3>, Tuple<List<T1>, List<T2>, List<T3>>>(
+					(x, y, z) => new Tuple<List<T1>, List<T2>, List<T3>>(x, y, z)),
+				new Sql(sql, args)
+			);
+		}
+		// 4
+        public Tuple<List<T1>, List<T2>, List<T3>, List<T4>> FetchMultiple<T1, T2, T3, T4>(string sql, params object[] args)
+		{
+			return FetchMultiple<T1, T2, T3, T4, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, Tuple<List<T1>, List<T2>, List<T3>, List<T4>>>(
+				new[] { typeof(T1), typeof(T2), typeof(T3), typeof(T4) },
+				new Func<List<T1>, List<T2>, List<T3>, List<T4>, Tuple<List<T1>, List<T2>, List<T3>, List<T4>>>(
+					(w, x, y, z) => new Tuple<List<T1>, List<T2>, List<T3>, List<T4>>(w, x, y, z)),
+				new Sql(sql, args)
+			);
+		}
+		// 5
+        public Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>> FetchMultiple<T1, T2, T3, T4, T5>(string sql, params object[] args)
+		{
+			return FetchMultiple<T1, T2, T3, T4, T5, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>>>(
+				new[] { typeof(T1), typeof(T2), typeof(T3), typeof(T4), typeof(T5) },
+				new Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>>>(
+					(v, w, x, y, z) => new Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>>(v, w, x, y, z)
+				),
+				new Sql(sql, args)
+			);
+		}
+
+		// 6 
+        public Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>> FetchMultiple<T1, T2, T3, T4, T5, T6>(string sql, params object[] args)
+		{
+			return FetchMultiple<T1, T2, T3, T4, T5, T6, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>>>(
+				new[] { typeof(T1), typeof(T2), typeof(T3), typeof(T4), typeof(T5), typeof(T6) },
+				new Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>>>(
+					(u, v, w, x, y, z) => new Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>>(u, v, w, x, y, z)
+				),
+				new Sql(sql, args)
+			);
+		}
+
+		// 7 
+        public Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>> FetchMultiple<T1, T2, T3, T4, T5, T6, T7>(string sql, params object[] args)
+		{
+			return FetchMultiple<T1, T2, T3, T4, T5, T6, T7, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>>>(
+				new[] { typeof(T1), typeof(T2), typeof(T3), typeof(T4), typeof(T5), typeof(T6), typeof(T7) },
+				new Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>>>(
+					(t, u, v, w, x, y, z) => new Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>>(t, u, v, w, x, y, z)
+				),
+				new Sql(sql, args)
+			);
+		}
+
+		// 8 
+        public Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, List<T8>> FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8>(string sql, params object[] args)
+		{
+			return FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, List<T8>>>(
+				new[] { typeof(T1), typeof(T2), typeof(T3), typeof(T4), typeof(T5), typeof(T6), typeof(T7), typeof(T8) },
+				new Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, List<T8>, Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, List<T8>>>(
+					(s, t, u, v, w, x, y, z) => new Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, List<T8>>(s, t, u, v, w, x, y, z)
+				),
+				new Sql(sql, args)
+			);
+		}
+
+		// 9 
+        public Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T8>, List<T9>>> FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9>(string sql, params object[] args)
+		{
+			return FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T8>, List<T9>>>>(
+				new[] { typeof(T1), typeof(T2), typeof(T3), typeof(T4), typeof(T5), typeof(T6), typeof(T7), typeof(T8), typeof(T9) },
+				new Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, List<T8>, List<T9>, Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T8>, List<T9>>>>(
+					(r, s, t, u, v, w, x, y, z) => new Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T8>, List<T9>>>(r, s, t, u, v, w, x, new Tuple<List<T8>, List<T9>>(y, z))
+				),
+				new Sql(sql, args)
+			);
+		}
+
+		// 10 
+        public Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T8>, List<T9>, List<T10>>> FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>(string sql, params object[] args)
+		{
+			return FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T8>, List<T9>, List<T10>>>>(
+				new[] { typeof(T1), typeof(T2), typeof(T3), typeof(T4), typeof(T5), typeof(T6), typeof(T7), typeof(T8), typeof(T9), typeof(T10) },
+				new Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, List<T8>, List<T9>, List<T10>, Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T8>, List<T9>, List<T10>>>>(
+					(q, r, s, t, u, v, w, x, y, z) => new Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T8>, List<T9>, List<T10>>>(q, r, s, t, u, v, w, new Tuple<List<T8>, List<T9>, List<T10>>(x, y, z))
+				),
+				new Sql(sql, args)
+			);
+		}
+
+		// 11 
+        public Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T8>, List<T9>, List<T10>, List<T11>>> FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>(string sql, params object[] args)
+		{
+			return FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, DontMap, DontMap, DontMap, DontMap, DontMap, Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T8>, List<T9>, List<T10>, List<T11>>>>(
+				new[] { typeof(T1), typeof(T2), typeof(T3), typeof(T4), typeof(T5), typeof(T6), typeof(T7), typeof(T8), typeof(T9), typeof(T10), typeof(T11) },
+				new Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, List<T8>, List<T9>, List<T10>, List<T11>, Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T8>, List<T9>, List<T10>, List<T11>>>>(
+					(p, q, r, s, t, u, v, w, x, y, z) => new Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T8>, List<T9>, List<T10>, List<T11>>>(p, q, r, s, t, u, v, new Tuple<List<T8>, List<T9>, List<T10>, List<T11>>(w, x, y, z))
+				),
+				new Sql(sql, args)
+			);
+		}
+
+		// 12 
+        public Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T8>, List<T9>, List<T10>, List<T11>, List<T12>>> FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>(string sql, params object[] args)
+		{
+			return FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, DontMap, DontMap, DontMap, DontMap, Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T8>, List<T9>, List<T10>, List<T11>, List<T12>>>>(
+				new[] { typeof(T1), typeof(T2), typeof(T3), typeof(T4), typeof(T5), typeof(T6), typeof(T7), typeof(T8), typeof(T9), typeof(T10), typeof(T11), typeof(T12) },
+				new Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T8>, List<T9>, List<T10>, List<T11>, List<T12>>>>(
+					(o, p, q, r, s, t, u, v, w, x, y, z) => new Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T8>, List<T9>, List<T10>, List<T11>, List<T12>>>(o, p, q, r, s, t, u, new Tuple<List<T8>, List<T9>, List<T10>, List<T11>, List<T12>>(v, w, x, y, z))
+				),
+				new Sql(sql, args)
+			);
+		}
+
+		// 13 
+        public Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, List<T13>>> FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>(string sql, params object[] args)
+		{
+			return FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, DontMap, DontMap, DontMap, Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, List<T13>>>>(
+				new[] { typeof(T1), typeof(T2), typeof(T3), typeof(T4), typeof(T5), typeof(T6), typeof(T7), typeof(T8), typeof(T9), typeof(T10), typeof(T11), typeof(T12), typeof(T13) },
+				new Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, List<T13>, Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, List<T13>>>>(
+					(n, o, p, q, r, s, t, u, v, w, x, y, z) => new Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, List<T13>>>(n, o, p, q, r, s, t, new Tuple<List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, List<T13>>(u, v, w, x, y, z))
+				),
+				new Sql(sql, args)
+			);
+		}
+
+		// 14 
+        public Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, List<T13>, List<T14>>> FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>(string sql, params object[] args)
+		{
+			return FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, DontMap, DontMap, Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, List<T13>, List<T14>>>>(
+				new[] { typeof(T1), typeof(T2), typeof(T3), typeof(T4), typeof(T5), typeof(T6), typeof(T7), typeof(T8), typeof(T9), typeof(T10), typeof(T11), typeof(T12), typeof(T13), typeof(T14) },
+				new Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, List<T13>, List<T14>, Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, List<T13>, List<T14>>>>(
+					(m, n, o, p, q, r, s, t, u, v, w, x, y, z) => new Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, List<T13>, List<T14>>>(m, n, o, p, q, r, s, new Tuple<List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, List<T13>, List<T14>>(t, u, v, w, x, y, z))
+				),
+				new Sql(sql, args)
+			);
+		}
+
+		// 15 
+        public Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, List<T13>, List<T14>, List<T15>>> FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>(string sql, params object[] args)
+		{
+			return FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, DontMap, Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, List<T13>, List<T14>, List<T15>>>>(
+				new[] { typeof(T1), typeof(T2), typeof(T3), typeof(T4), typeof(T5), typeof(T6), typeof(T7), typeof(T8), typeof(T9), typeof(T10), typeof(T11), typeof(T12), typeof(T13), typeof(T14), typeof(T15) },
+				new Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, List<T13>, List<T14>, List<T15>, Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, List<T13>, List<T14>, List<T15>>>>(
+					(l, m, n, o, p, q, r, s, t, u, v, w, x, y, z) => new Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, List<T13>, List<T14>, List<T15>>>(l, m, n, o, p, q, r, new Tuple<List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, List<T13>, List<T14>, List<T15>>(s, t, u, v, w, x, y, z))
+				),
+				new Sql(sql, args)
+			);
+		}
+
+		// 16 
+        public Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, List<T13>, List<T14>, Tuple<List<T15>, List<T16>>>> FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(string sql, params object[] args)
+		{
+			return FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, List<T13>, List<T14>, Tuple<List<T15>, List<T16>>>>>(
+				new[] { typeof(T1), typeof(T2), typeof(T3), typeof(T4), typeof(T5), typeof(T6), typeof(T7), typeof(T8), typeof(T9), typeof(T10), typeof(T11), typeof(T12), typeof(T13), typeof(T14), typeof(T15), typeof(T16) },
+				new Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, List<T13>, List<T14>, List<T15>, List<T16>, Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, List<T13>, List<T14>, Tuple<List<T15>, List<T16>>>>>(
+					(k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z) => new Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, List<T13>, List<T14>, Tuple<List<T15>, List<T16>>>>(k, l, m, n, o, p, q, new Tuple<List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, List<T13>, List<T14>, Tuple<List<T15>, List<T16>>>(r, s, t, u, v, w, x, new Tuple<List<T15>, List<T16>>(y, z)))
+				),
+				new Sql(sql, args)
+			);
+		}
+
+		// 2
+        public Tuple<List<T1>, List<T2>> FetchMultiple<T1, T2>(Sql sql) {
+			return FetchMultiple<T1, T2, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, Tuple<List<T1>, List<T2>>>(
+				new[] { typeof(T1), typeof(T2) },
+				new Func<List<T1>, List<T2>, Tuple<List<T1>, List<T2>>>(
+					(y, z) => new Tuple<List<T1>, List<T2>>(y, z)),
+				sql
+			); 
+		}
+		// 3
+        public Tuple<List<T1>, List<T2>, List<T3>> FetchMultiple<T1, T2, T3>(Sql sql)
+		{
+			return FetchMultiple<T1, T2, T3, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, Tuple<List<T1>, List<T2>, List<T3>>>(
+				new[] { typeof(T1), typeof(T2), typeof(T3) },
+				new Func<List<T1>, List<T2>, List<T3>, Tuple<List<T1>, List<T2>, List<T3>>>(
+					(x, y, z) => new Tuple<List<T1>, List<T2>, List<T3>>(x, y, z)),
+				sql
+			);
+		}
+		// 4
+        public Tuple<List<T1>, List<T2>, List<T3>, List<T4>> FetchMultiple<T1, T2, T3, T4>(Sql sql)
+		{
+			return FetchMultiple<T1, T2, T3, T4, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, Tuple<List<T1>, List<T2>, List<T3>, List<T4>>>(
+				new[] { typeof(T1), typeof(T2), typeof(T3), typeof(T4) },
+				new Func<List<T1>, List<T2>, List<T3>, List<T4>, Tuple<List<T1>, List<T2>, List<T3>, List<T4>>>(
+					(w, x, y, z) => new Tuple<List<T1>, List<T2>, List<T3>, List<T4>>(w, x, y, z)),
+				sql
+			);
+		}
+		// 5
+        public Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>> FetchMultiple<T1, T2, T3, T4, T5>(Sql sql)
+		{
+			return FetchMultiple<T1, T2, T3, T4, T5, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>>>(
+				new[] { typeof(T1), typeof(T2), typeof(T3), typeof(T4), typeof(T5) },
+				new Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>>>(
+					(v, w, x, y, z) => new Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>>(v, w, x, y, z)
+				),
+				sql
+			);
+		}
+
+		// 6 
+        public Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>> FetchMultiple<T1, T2, T3, T4, T5, T6>(Sql sql)
+		{
+			return FetchMultiple<T1, T2, T3, T4, T5, T6, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>>>(
+				new[] { typeof(T1), typeof(T2), typeof(T3), typeof(T4), typeof(T5), typeof(T6) },
+				new Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>>>(
+					(u, v, w, x, y, z) => new Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>>(u, v, w, x, y, z)
+				),
+				sql
+			);
+		}
+
+		// 7 
+        public Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>> FetchMultiple<T1, T2, T3, T4, T5, T6, T7>(Sql sql)
+		{
+			return FetchMultiple<T1, T2, T3, T4, T5, T6, T7, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>>>(
+				new[] { typeof(T1), typeof(T2), typeof(T3), typeof(T4), typeof(T5), typeof(T6), typeof(T7) },
+				new Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>>>(
+					(t, u, v, w, x, y, z) => new Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>>(t, u, v, w, x, y, z)
+				),
+				sql
+			);
+		}
+
+		// 8 
+        public Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, List<T8>> FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8>(Sql sql)
+		{
+			return FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, List<T8>>>(
+				new[] { typeof(T1), typeof(T2), typeof(T3), typeof(T4), typeof(T5), typeof(T6), typeof(T7), typeof(T8) },
+				new Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, List<T8>, Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, List<T8>>>(
+					(s, t, u, v, w, x, y, z) => new Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, List<T8>>(s, t, u, v, w, x, y, z)
+				),
+				sql
+			);
+		}
+
+		// 9 
+        public Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T8>, List<T9>>> FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9>(Sql sql)
+		{
+			return FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T8>, List<T9>>>>(
+				new[] { typeof(T1), typeof(T2), typeof(T3), typeof(T4), typeof(T5), typeof(T6), typeof(T7), typeof(T8), typeof(T9) },
+				new Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, List<T8>, List<T9>, Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T8>, List<T9>>>>(
+					(r, s, t, u, v, w, x, y, z) => new Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T8>, List<T9>>>(r, s, t, u, v, w, x, new Tuple<List<T8>, List<T9>>(y, z))
+				),
+				sql
+			);
+		}
+
+		// 10 
+        public Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T8>, List<T9>, List<T10>>> FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>(Sql sql)
+		{
+			return FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, DontMap, DontMap, DontMap, DontMap, DontMap, DontMap, Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T8>, List<T9>, List<T10>>>>(
+				new[] { typeof(T1), typeof(T2), typeof(T3), typeof(T4), typeof(T5), typeof(T6), typeof(T7), typeof(T8), typeof(T9), typeof(T10) },
+				new Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, List<T8>, List<T9>, List<T10>, Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T8>, List<T9>, List<T10>>>>(
+					(q, r, s, t, u, v, w, x, y, z) => new Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T8>, List<T9>, List<T10>>>(q, r, s, t, u, v, w, new Tuple<List<T8>, List<T9>, List<T10>>(x, y, z))
+				),
+				sql
+			);
+		}
+
+		// 11 
+        public Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T8>, List<T9>, List<T10>, List<T11>>> FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>(Sql sql)
+		{
+			return FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, DontMap, DontMap, DontMap, DontMap, DontMap, Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T8>, List<T9>, List<T10>, List<T11>>>>(
+				new[] { typeof(T1), typeof(T2), typeof(T3), typeof(T4), typeof(T5), typeof(T6), typeof(T7), typeof(T8), typeof(T9), typeof(T10), typeof(T11) },
+				new Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, List<T8>, List<T9>, List<T10>, List<T11>, Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T8>, List<T9>, List<T10>, List<T11>>>>(
+					(p, q, r, s, t, u, v, w, x, y, z) => new Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T8>, List<T9>, List<T10>, List<T11>>>(p, q, r, s, t, u, v, new Tuple<List<T8>, List<T9>, List<T10>, List<T11>>(w, x, y, z))
+				),
+				sql
+			);
+		}
+
+		// 12 
+        public Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T8>, List<T9>, List<T10>, List<T11>, List<T12>>> FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>(Sql sql)
+		{
+			return FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, DontMap, DontMap, DontMap, DontMap, Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T8>, List<T9>, List<T10>, List<T11>, List<T12>>>>(
+				new[] { typeof(T1), typeof(T2), typeof(T3), typeof(T4), typeof(T5), typeof(T6), typeof(T7), typeof(T8), typeof(T9), typeof(T10), typeof(T11), typeof(T12) },
+				new Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T8>, List<T9>, List<T10>, List<T11>, List<T12>>>>(
+					(o, p, q, r, s, t, u, v, w, x, y, z) => new Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T8>, List<T9>, List<T10>, List<T11>, List<T12>>>(o, p, q, r, s, t, u, new Tuple<List<T8>, List<T9>, List<T10>, List<T11>, List<T12>>(v, w, x, y, z))
+				),
+				sql
+			);
+		}
+
+		// 13 
+        public Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, List<T13>>> FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>(Sql sql)
+		{
+			return FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, DontMap, DontMap, DontMap, Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, List<T13>>>>(
+				new[] { typeof(T1), typeof(T2), typeof(T3), typeof(T4), typeof(T5), typeof(T6), typeof(T7), typeof(T8), typeof(T9), typeof(T10), typeof(T11), typeof(T12), typeof(T13) },
+				new Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, List<T13>, Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, List<T13>>>>(
+					(n, o, p, q, r, s, t, u, v, w, x, y, z) => new Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, List<T13>>>(n, o, p, q, r, s, t, new Tuple<List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, List<T13>>(u, v, w, x, y, z))
+				),
+				sql
+			);
+		}
+
+		// 14 
+        public Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, List<T13>, List<T14>>> FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>(Sql sql)
+		{
+			return FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, DontMap, DontMap, Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, List<T13>, List<T14>>>>(
+				new[] { typeof(T1), typeof(T2), typeof(T3), typeof(T4), typeof(T5), typeof(T6), typeof(T7), typeof(T8), typeof(T9), typeof(T10), typeof(T11), typeof(T12), typeof(T13), typeof(T14) },
+				new Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, List<T13>, List<T14>, Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, List<T13>, List<T14>>>>(
+					(m, n, o, p, q, r, s, t, u, v, w, x, y, z) => new Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, List<T13>, List<T14>>>(m, n, o, p, q, r, s, new Tuple<List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, List<T13>, List<T14>>(t, u, v, w, x, y, z))
+				),
+				sql
+			);
+		}
+
+		// 15 
+        public Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, List<T13>, List<T14>, List<T15>>> FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>(Sql sql)
+		{
+			return FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, DontMap, Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, List<T13>, List<T14>, List<T15>>>>(
+				new[] { typeof(T1), typeof(T2), typeof(T3), typeof(T4), typeof(T5), typeof(T6), typeof(T7), typeof(T8), typeof(T9), typeof(T10), typeof(T11), typeof(T12), typeof(T13), typeof(T14), typeof(T15) },
+				new Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, List<T13>, List<T14>, List<T15>, Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, List<T13>, List<T14>, List<T15>>>>(
+					(l, m, n, o, p, q, r, s, t, u, v, w, x, y, z) => new Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, List<T13>, List<T14>, List<T15>>>(l, m, n, o, p, q, r, new Tuple<List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, List<T13>, List<T14>, List<T15>>(s, t, u, v, w, x, y, z))
+				),
+				sql
+			);
+		}
+
+		// 16 
+        public Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, List<T13>, List<T14>, Tuple<List<T15>, List<T16>>>> FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(Sql sql)
+		{
+			return FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, List<T13>, List<T14>, Tuple<List<T15>, List<T16>>>>>(
+				new[] { typeof(T1), typeof(T2), typeof(T3), typeof(T4), typeof(T5), typeof(T6), typeof(T7), typeof(T8), typeof(T9), typeof(T10), typeof(T11), typeof(T12), typeof(T13), typeof(T14), typeof(T15), typeof(T16) },
+				new Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, List<T13>, List<T14>, List<T15>, List<T16>, Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, List<T13>, List<T14>, Tuple<List<T15>, List<T16>>>>>(
+					(k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z) => new Tuple<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, Tuple<List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, List<T13>, List<T14>, Tuple<List<T15>, List<T16>>>>(k, l, m, n, o, p, q, new Tuple<List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, List<T13>, List<T14>, Tuple<List<T15>, List<T16>>>(r, s, t, u, v, w, x, new Tuple<List<T15>, List<T16>>(y, z)))
+				),
+				sql
+			);
+		}
+
 #endif
 
         public class DontMap {}
 
         // Actual implementation of the multi query
-        private TRet FetchMultiple<T1, T2, T3, T4, TRet>(Type[] types, object cb, Sql Sql)
+        private TRet FetchMultiple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, TRet>(Type[] types, object cb, Sql Sql)
         {
             var sql = Sql.SQL;
             var args = Sql.Arguments;
@@ -1479,6 +2017,18 @@ namespace PetaPoco
                         var list2 = new List<T2>();
                         var list3 = new List<T3>();
                         var list4 = new List<T4>();
+                        var list5 = new List<T5>();
+                        var list6 = new List<T6>();
+                        var list7 = new List<T7>();
+                        var list8 = new List<T8>();
+                        var list9 = new List<T9>();
+                        var list10 = new List<T10>();
+                        var list11 = new List<T11>();
+                        var list12 = new List<T12>();
+                        var list13 = new List<T13>();
+                        var list14 = new List<T14>();
+                        var list15 = new List<T15>();
+                        var list16 = new List<T16>();
                         do
                         {
                          	if (typeIndex > types.Length)
@@ -1508,6 +2058,42 @@ namespace PetaPoco
                                         case 4:
                                             list4.Add(((Func<IDataReader, T4, T4>)factory)(r, default(T4)));
                                             break;
+                                        case 5:
+                                            list5.Add(((Func<IDataReader, T5, T5>)factory)(r, default(T5)));
+                                            break;
+                                        case 6:
+                                            list6.Add(((Func<IDataReader, T6, T6>)factory)(r, default(T6)));
+                                            break;
+                                        case 7:
+                                            list7.Add(((Func<IDataReader, T7, T7>)factory)(r, default(T7)));
+                                            break;
+                                        case 8:
+                                            list8.Add(((Func<IDataReader, T8, T8>)factory)(r, default(T8)));
+                                            break;
+                                        case 9:
+                                            list9.Add(((Func<IDataReader, T9, T9>)factory)(r, default(T9)));
+                                            break;
+                                        case 10:
+                                            list10.Add(((Func<IDataReader, T10, T10>)factory)(r, default(T10)));
+                                            break;
+                                        case 11:
+                                            list11.Add(((Func<IDataReader, T11, T11>)factory)(r, default(T11)));
+                                            break;
+                                        case 12:
+                                            list12.Add(((Func<IDataReader, T12, T12>)factory)(r, default(T12)));
+                                            break;
+                                        case 13:
+                                            list13.Add(((Func<IDataReader, T13, T13>)factory)(r, default(T13)));
+                                            break;
+                                        case 14:
+                                            list14.Add(((Func<IDataReader, T14, T14>)factory)(r, default(T14)));
+                                            break;
+                                        case 15:
+                                            list15.Add(((Func<IDataReader, T15, T15>)factory)(r, default(T15)));
+                                            break;
+                                        case 16:
+                                            list16.Add(((Func<IDataReader, T16, T16>)factory)(r, default(T16)));
+                                            break;
                                     }
                                 }
                                 catch (Exception x)
@@ -1528,6 +2114,30 @@ namespace PetaPoco
                                 return ((Func<List<T1>, List<T2>, List<T3>, TRet>)cb)(list1, list2, list3);
                             case 4:
                                 return ((Func<List<T1>, List<T2>, List<T3>, List<T4>, TRet>)cb)(list1, list2, list3, list4);
+                            case 5:
+                                return ((Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, TRet>)cb)(list1, list2, list3, list4, list5);
+                            case 6:
+                                return ((Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, TRet>)cb)(list1, list2, list3, list4, list5, list6);
+                            case 7:
+                                return ((Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, TRet>)cb)(list1, list2, list3, list4, list5, list6, list7);
+                            case 8:
+                                return ((Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, List<T8>, TRet>)cb)(list1, list2, list3, list4, list5, list6, list7, list8);
+                            case 9:
+                                return ((Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, List<T8>, List<T9>, TRet>)cb)(list1, list2, list3, list4, list5, list6, list7, list8, list9);
+                            case 10:
+                                return ((Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, List<T8>, List<T9>, List<T10>, TRet>)cb)(list1, list2, list3, list4, list5, list6, list7, list8, list9, list10);
+                            case 11:
+                                return ((Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, List<T8>, List<T9>, List<T10>, List<T11>, TRet>)cb)(list1, list2, list3, list4, list5, list6, list7, list8, list9, list10, list11);
+                            case 12:
+                                return ((Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, TRet>)cb)(list1, list2, list3, list4, list5, list6, list7, list8, list9, list10, list11, list12);
+                            case 13:
+                                return ((Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, List<T13>, TRet>)cb)(list1, list2, list3, list4, list5, list6, list7, list8, list9, list10, list11, list12, list13);
+                            case 14:
+                                return ((Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, List<T13>, List<T14>, TRet>)cb)(list1, list2, list3, list4, list5, list6, list7, list8, list9, list10, list11, list12, list13, list14);
+                            case 15:
+                                return ((Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, List<T13>, List<T14>, List<T15>, TRet>)cb)(list1, list2, list3, list4, list5, list6, list7, list8, list9, list10, list11, list12, list13, list14, list15);
+                            case 16:
+                                return ((Func<List<T1>, List<T2>, List<T3>, List<T4>, List<T5>, List<T6>, List<T7>, List<T8>, List<T9>, List<T10>, List<T11>, List<T12>, List<T13>, List<T14>, List<T15>, List<T16>, TRet>)cb)(list1, list2, list3, list4, list5, list6, list7, list8, list9, list10, list11, list12, list13, list14, list15, list16);
                         }
 
                         return default(TRet);
