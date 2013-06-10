@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestSettings name="Local" id="233dd774-8334-4d7c-8153-d8890336bfc0" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
   <Description><!--_locID_text="Description1"-->These are default test settings for a local test run.</Description>
-  <NamingScheme baseName="PetaPocoTests" appendTimeStamp="false" useDefault="false" />
+  <NamingScheme baseName="PetaPoco.Tests" appendTimeStamp="false" useDefault="false" />
   <Deployment enabled="false" />
   <Execution hostProcessPlatform="MSIL">
     <AgentRule name="LocalMachineDefaultRole">
