@@ -1,16 +1,22 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <TestSettings name="Local" id="233dd774-8334-4d7c-8153-d8890336bfc0" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
-  <Description><!--_locID_text="Description1"-->These are default test settings for a local test run.</Description>
+  <Description>These are default test settings for a local test run.</Description>
   <NamingScheme baseName="PetaPoco.Tests" appendTimeStamp="false" useDefault="false" />
-  <Deployment enabled="false" />
   <Execution hostProcessPlatform="MSIL">
+    <TestTypeSpecific>
+      <UnitTestRunConfig testTypeId="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b">
+        <AssemblyResolution>
+          <TestDirectory useLoadContext="true" />
+        </AssemblyResolution>
+      </UnitTestRunConfig>
+    </TestTypeSpecific>
     <AgentRule name="LocalMachineDefaultRole">
       <DataCollectors>
         <DataCollector uri="datacollector://microsoft/CodeCoverage/1.0" assemblyQualifiedName="Microsoft.VisualStudio.TestTools.CodeCoverage.CoveragePlugIn, Microsoft.VisualStudio.QualityTools.Plugins.CodeCoverage, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" friendlyName="Code Coverage">
           <Configuration>
             <CodeCoverage xmlns="">
               <Regular>
-                <CodeCoverageItem binaryFile="PetaPoco.Tests\bin\Release\PetaPoco.Tests.dll" pdbFile="PetaPoco.Tests\bin\Release\PetaPoco.Tests.pdb" instrumentInPlace="true" />
+                <CodeCoverageItem binaryFile="PetaPoco\bin\Release\PetaPoco.dll" pdbFile="PetaPoco\bin\Release\PetaPoco.pdb" instrumentInPlace="true" />
               </Regular>
             </CodeCoverage>
           </Configuration>
